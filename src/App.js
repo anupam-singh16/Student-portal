@@ -51,7 +51,7 @@ const getData = (e) =>{
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
+      body: JSON.stringify({   
         name,
         email,
         number,
@@ -86,7 +86,7 @@ const getData = (e) =>{
 
   return (
     <div className="App" >
-
+     <h1>Student Portal </h1>
       {/* {api?.map((item, i) => {
         return (
           <div>
