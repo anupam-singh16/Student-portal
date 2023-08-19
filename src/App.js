@@ -103,7 +103,7 @@ const getData = (e) =>{
           <input name="email" onChange={getData} placeholder="email" type="text" /><br/>
           <input name="name" onChange={getData} placeholder="name" type="text" /><br/>
           <input name="password" onChange={getData} type="password" placeholder="passowrd" /><br/>
-          <input name="number" onChange={getData} type="number" /><br/>
+          <input name="number" onChange={getData} placeholder='mobile number' type="number" /><br/>
           <button onClick={singup} >sign Up</button>
           </>)
       }
