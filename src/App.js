@@ -64,8 +64,6 @@ const getData = (e) =>{
     
     });
   }
-
- 
   const loginData =(e)=>{
     const { value, name } = e.target;
 
