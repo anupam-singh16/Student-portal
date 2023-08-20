@@ -22,13 +22,13 @@ const App = () => {
     //   .then((d) => {
     //     setApi(d);
     //   });
-    fetch("http://localhost:5000/")
+    fetch("http://localhost:5000/student")
       .then((response) => response.json())
       .then((d) => {
         console.log("login data",api)
         setApi(d);
       });
-  }, [login]);
+  }, []);
 
 
   console.log("api", api);
@@ -75,13 +75,23 @@ const getData = (e) =>{
     });
   }
   
-  const signIn = () =>{
-    const {email ,password } = login;
-    if(email === api.email && password === api.password){
-    alert("login successfully ")
-    }else{
-      alert("email or pasword invalid ")
-    }
+  const signIn = async () =>{
+    const { email,password } = login;
+
+    const res = await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({   
+        email,
+        password
+      }),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("login post data",data)
+    });
   }
 
   return (
@@ -94,13 +104,13 @@ const getData = (e) =>{
           </div>
         );
       })} */}
-      {show ?(<> <input name="email" placeholder="email"  onChange={loginData} type="text" /><br/>
+      {show ?(<> <input  type='email' name="email" placeholder="email"  onChange={loginData}  /><br/>
           <input name="password" type="password"  onChange={loginData} /><br/>
           <button onClick={signIn} >login</button>
           </>)
           :
          ( <>
-          <input name="email" onChange={getData} placeholder="email" type="text" /><br/>
+          <input type='email'  name="email" onChange={getData} placeholder="email"  /><br/>
           <input name="name" onChange={getData} placeholder="name" type="text" /><br/>
           <input name="password" onChange={getData} type="password" placeholder="passowrd" /><br/>
           <input name="number" onChange={getData} placeholder='mobile number' type="number" /><br/>
